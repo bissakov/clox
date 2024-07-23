@@ -17,7 +17,7 @@ void FreeMemory(void **memory) {
 }
 
 struct FileResult ReadEntireFile(char *file_path) {
-  struct FileResult result = {};
+  struct FileResult result = {0};
 
   HANDLE file_handle = CreateFile(file_path, GENERIC_READ, FILE_SHARE_READ, 0,
                                   OPEN_EXISTING, 0, 0);

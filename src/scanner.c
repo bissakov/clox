@@ -26,7 +26,7 @@ char *ConstructLexemeString(char *start, int length) {
 
 void GetToken(struct Token *token, enum TokenType type, float literal,
               int start, int current, char *source) {
-  struct Lexeme lexeme = {};
+  struct Lexeme lexeme = {0};
   lexeme.start = source + start;
   lexeme.length = current - start;
   char *value = ConstructLexemeString(lexeme.start, lexeme.length);
@@ -365,7 +365,7 @@ void ScanTokens(char *source, int source_length, struct Token *tokens,
 
   while (!IsAtEnd(current, source_length)) {
     start = current;
-    struct Result result = {};
+    struct Result result = {0};
     ScanToken(&result, source, source_length, &line, start, &current);
 
     // TODO(bissakov): Do I store ILLEGAL tokens or not?
@@ -382,9 +382,9 @@ void ScanTokens(char *source, int source_length, struct Token *tokens,
     *current_token_idx += 1;
   }
 
-  struct Token eof_token = {};
+  struct Token eof_token = {0};
   eof_token.type = END_OF_FILE;
-  struct Lexeme lexeme = {};
+  struct Lexeme lexeme = {0};
   eof_token.lexeme = lexeme;
   eof_token.literal = 0;
   eof_token.line = line;
